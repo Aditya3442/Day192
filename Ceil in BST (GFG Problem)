@@ -1,0 +1,28 @@
+class Tree {
+    // Function to return the ceil of given number in BST.
+    int ceil = Integer.MAX_VALUE;
+    public void recur (Node root , int key) {
+        if(root == null)
+          return;
+        if(root.data == key) {
+            ceil = Math.min(ceil , root.data);
+            return;
+        }
+        else if(root.data > key) {
+            ceil = Math.min(ceil , root.data);
+            recur(root.left , key);
+        }
+        else{
+            recur(root.right , key);
+        }
+    }
+    int findCeil(Node root, int key) {
+        if (root == null) return -1;
+        // Code here
+        recur(root , key);
+        if(ceil == Integer.MAX_VALUE)
+          return -1;
+        return ceil;
+        
+    }
+}
