@@ -1,0 +1,22 @@
+class Solution {
+    public int getMaximumGenerated(int n) {
+        int nums[] = new int[n + 1];
+        if(n < 2)
+          return n;
+        nums[0] = 0;
+        nums[1] = 1;
+        int maxi = 0;
+        for (int i = 2; i <= n; i++) {
+            if(i % 2 == 0) {
+                int x = i / 2;
+                nums[i] = nums[x];
+            }
+            else {
+                int x = (i / 2) ;
+                nums[i] = nums[x] + nums[x + 1];
+            }
+            maxi = Math.max(maxi , nums[i]);
+        }
+        return maxi;
+    }
+}
